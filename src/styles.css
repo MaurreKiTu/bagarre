@@ -2,3 +2,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: 'AmaticSC';
+    src: url('./assets/fonts/AmaticSC-Regular.ttf');
+  }
+
+  @font-face {
+    font-family: 'Alegreya';
+    src: url('./assets/fonts/Alegreya-Regular.ttf');
+  }
