@@ -7,25 +7,29 @@ import { CommonModule } from '@angular/common';
 	imports: [CommonModule],
 	template: `
   	<div class="p-10">
-		<div class="m-4">
-			<h2 class="text-4xl font-['AmaticSC']"> Vue d'ensemble </h2>
+		<div class="m-4 mb-6">
+			<h2 class="text-4xl font-['AmaticSC'] mb-2"> Vue d'ensemble </h2>
 			<p>
 				La bagarre est un jeu rapide de combat. Le but est de rester en vie ! Si c'est votre première partie, on recommande de jouer d'abord avec les règles de base, puis d'ajouter les personnages lorsque vous avez pris le jeu en main.
 			</p>
 		</div>
 		<div class="m-4">
-			<h2 class="text-4xl font-['AmaticSC']"> Mise en place </h2>
-			<p>Dans ce jeu, l'as vaut 1, le valet vaut 11, la dame 12 et le roi 13. Mélangez un jeu de 52 cartes et distribuez 3 cartes à chaque joueur.se, disposées face visible comme suit (exemple ci-contre) : 
-				<img class="p-2" src={{table}} alt="Placement">
-				<ul>
-					<li>Les 2 cartes les plus grandes côte à côte verticalement : ce sont ses points de vie (PV).</li>
-					<li>La carte la plus faible devant les PV, horizontalement : c'est son bouclier.</li>
+			<h2 class="text-4xl font-['AmaticSC'] mb-2"> Mise en place </h2>
+			<p class="mb-8">Dans ce jeu, l'as vaut 1, le valet vaut 11, la dame 12 et le roi 13. Mélangez un jeu de 52 cartes et distribuez 3 cartes à chaque joueur.se, disposées face visible comme suit : 
+				<div class="flex justify-center">
+					<img class="p-2" src={{table}} alt="Placement">
+				</div>
+				<ul class="marker:text-main list-disc">
+					<li>Les 2 cartes les plus grandes côte à côte verticalement : ce sont ses <b>points de vie (PV)</b>.</li>
+					<li>La carte la plus faible devant les PV, horizontalement : c'est son <b>bouclier</b>.</li>
+					<li>Le reste des cartes est mis au centre et forme la <b>pioche</b>. </li>
+					<li>La <b>défausse</b> est située à côté de la pioche.</li>
 				</ul>
-			<p>Le reste des cartes est mis au centre et forme la pioche. La défausse est située à côté de la pioche.<br />
+			<p><br />
 			La personne qui a la somme de cartes la plus faible commence. Puis chacun.e joue son tour dans l'ordre des aiguilles d'une montre.</p>
 		</div>
 		<div class="m-4">
-			<h2 class="text-4xl font-['AmaticSC']">Déroulement d'un tour</h2>
+			<h2 class="text-4xl font-['AmaticSC'] mb-2">Déroulement d'un tour</h2>
 			<p>A votre tour, choisissez une action parmi les 4 ci-dessous, et annoncez-la à voix haute. Révélez ensuite la première carte de la pioche et appliquez cette action.<p>
 			<ul>
 				<li><b>Je change le bouclier de X</b> : défaussez le bouclier de la personne annoncée et remplacez le par la carte piochée.</li>
@@ -44,11 +48,11 @@ import { CommonModule } from '@angular/common';
 			</p>
 		</div>
 		<div class="m-4">
-			<h2 class="text-4xl font-['AmaticSC']">Fin de partie</h2>
+			<h2 class="text-4xl font-['AmaticSC'] mb-2">Fin de partie</h2>
 			<p>La dernière personne en vie dans la partie gagne.</p>
 		</div>
 		<div class="m-4">
-			<h2 class="text-4xl font-['AmaticSC']">Autres règles</h2>
+			<h2 class="text-4xl font-['AmaticSC'] mb-2">Autres règles</h2>
 			<p><b>Perte de points de vie</b> : La carte PV la plus faible est toujours perdue en priorité.</p>
 			<p><img src="img/clairvoyance.png" class="float-start img-icon p-1 m-1" alt="Clairvoyance"><b>Clairvoyance</b> : Tant que vous avez exactement 1 point de vie, vous êtes clairvoyant.e : lors de votre tour, vous pouvez regarder la première carte de la pioche, puis choisir votre action.</p>
 			<p><img src="img/dragon.png" class="float-start img-icon p-1 m-1" alt="Réveil du dragon"><b>Réveil du dragon</b> : Lorsque la pile de pioche est épuisée, reformez en une en mélangeant la défausse, puis chaque joueur.se reçoit une attaque venant de la pioche. Chaque fois que la pile est de nouveau terminée, le dragon attaque une fois de plus (2 attaques successives la 2e fois, puis 3, etc.)</p>
