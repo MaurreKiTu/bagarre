@@ -21,10 +21,10 @@ interface Article {
       </div>
     </div>
     
-    <div class="news m-10">
-      <h1 class="text-5xl font-['AmaticSC'] m-5" > News </h1>
-      <div class="cards grid gap-4 grid-cols-3 m-5">
-        <div *ngFor="let article of news; index as i; first as isFirst" class="card bg-stone-300 text-stone-800 shadow-xl cursor-pointer" (click)="onClickArticle(article)">
+    <div class="news" >
+      <h1 class="text-5xl font-['AmaticSC'] m-5 flex justify-center" > News </h1>
+      <div class="cards grid gap-4 grid-cols-5 m-5  " >
+        <div *ngFor="let article of news; index as i; first as isFirst" [ngClass]="{'col-start-2': i % 3 == 0}" class="card bg-stone-300 text-stone-800 shadow-xl cursor-pointer" (click)="onClickArticle(article)">
           <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
           <div class="card-body">
             <h2 class="card-title">

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CharcardComponent } from './charcard.component';
 
 @Component({
 	selector: "rules-comp",
 	standalone: true,
-	imports: [CommonModule],
+	imports: [CommonModule, CharcardComponent],
 	template: `
   	<div class="p-10">
 		<div class="m-4 mb-6">
@@ -19,7 +20,7 @@ import { CommonModule } from '@angular/common';
 				<div class="flex justify-center">
 					<img class="p-2" src={{table}} alt="Placement">
 				</div>
-				<ul class="marker:text-main list-disc">
+				<ul class="marker:text-primary list-disc">
 					<li>Les 2 cartes les plus grandes côte à côte verticalement : ce sont ses <b>points de vie (PV)</b>.</li>
 					<li>La carte la plus faible devant les PV, horizontalement : c'est son <b>bouclier</b>.</li>
 					<li>Le reste des cartes est mis au centre et forme la <b>pioche</b>. </li>
@@ -31,19 +32,40 @@ import { CommonModule } from '@angular/common';
 		<div class="m-4">
 			<h2 class="text-4xl font-['AmaticSC'] mb-2">Déroulement d'un tour</h2>
 			<p>A votre tour, choisissez une action parmi les 4 ci-dessous, et annoncez-la à voix haute. Révélez ensuite la première carte de la pioche et appliquez cette action.<p>
-			<ul>
-				<li><b>Je change le bouclier de X</b> : défaussez le bouclier de la personne annoncée et remplacez le par la carte piochée.</li>
-				<li><b>Je change mon bouclier</b> : défaussez votre bouclier et remplacez le par la carte piochée.</li>
-				<li><b>J'attaque X</b> : La personne annoncée perd autant de vie que la différence entre la carte piochée et son bouclier. Elle met à jour ses PV en défaussant sa ou ses cartes PV perdues et prend dans la défausse la carte correspondant à son nouveau total de PV. Si la carte recherchée n'est pas dans la défausse, elle la prend dans la pioche, et la mélange ensuite. Si le bouclier de la personne attaquée est supérieur à la valeur de l'attaque, l'attaque est sans effet. Le bouclier n'est pas défaussé après une attaque.</li>
-				<li><b>Je charge une attaque</b> : mettre la carte tirée face cachée devant soi sans la regarder. La prochaine fois que vous attaquez, révélez la charge qui se cumule à la carte d'attaque piochée. Les deux cartes sont ensuite défaussées. Attention :
-				<ul>
-					<li>Si vous perdez de la vie en ayant une attaque chargée, vous devez défausser votre charge.</li>
-					<li>Vous ne pouvez avoir qu'une seule attaque chargée à la fois.</li>
-					<li>Un joueur avec une charge n'est pas obligé d'attaquer, mais s'il attaque, il est obligé d'utiliser sa charge.</li>
-				</ul>
-			</ul>
+			<div class="cards grid gap-4 grid-cols-6 m-5  ">
+
+				<div class="card flex  bg-stone-300 shadow-xl col-span-2 col-start-2">
+					<h2 class="text-center p-2 bg-slate-600  rounded-t-lg card-title justify-center"> Je change le bouclier de X</h2>  
+					<p class="text-justify p-4 text-black">Défaussez le bouclier de la personne annoncée et remplacez le par la carte piochée.</p>
+				</div>
+				<div class="card flex bg-stone-300 shadow-xl col-span-2">
+					<h2 class="text-center p-2 bg-slate-600  rounded-t-lg card-title justify-center"> Je change mon bouclier</h2>  
+					<p class="text-justify p-4 text-black">Défaussez votre bouclier et remplacez le par la carte piochée.</p>
+				</div>
+				<div class="card flex bg-stone-300 shadow-xl col-span-2 col-start-2">
+					<h2 class="text-center p-2 bg-slate-600  rounded-t-lg card-title justify-center"> J'attaque X</h2>  
+					<p class="text-justify p-4 text-black">La personne annoncée perd autant de vie que la différence entre la carte piochée et son bouclier. Elle met à jour ses PV en défaussant sa ou ses cartes PV perdues et prend dans la défausse la carte correspondant à son nouveau total de PV. </p>
+					<ul class="marker:text-primary list-disc text-justify p-6 text-black" >
+						<li> Si la carte recherchée n'est pas dans la défausse, elle la prend dans la pioche, et la mélange ensuite.  </li>
+						<li> Si le bouclier de la personne attaquée est supérieur à la valeur de l'attaque, l'attaque est sans effet. </li>
+						<li> Le bouclier n'est pas défaussé après une attaque.</li>
+					</ul>
+				</div>
+				<div class="card flex bg-stone-300 shadow-xl col-span-2">
+					<h2 class="text-center p-2 bg-slate-600  rounded-t-lg card-title justify-center"> Je charge une attaque</h2>  
+					<p class="text-justify p-4 text-black">
+						Mettre la carte tirée face cachée devant soi sans la regarder. La prochaine fois que vous attaquez, révélez la charge qui se cumule à la carte d'attaque piochée. Les deux cartes sont ensuite défaussées. 
+					</p>
+					<ul class="marker:text-primary list-disc text-justify p-6 text-black" >
+					Attention :
+						<li> Si vous perdez de la vie en ayant une attaque chargée, vous devez défausser votre charge. </li>
+						<li> Vous ne pouvez avoir qu'une seule attaque chargée à la fois.</li>
+						<li> Un joueur avec une charge n'est pas obligé d'attaquer, mais s'il attaque, il est obligé d'utiliser sa charge.</li>
+					</ul>
+				</div>
+			</div>
 			<p>
-				Lorsque les PV d'un.e joueur.se tombent à zéro, il/elle est éliminé.e, et la personne qui l'a tué.e joue immédiatement une action supplémentaire. En cas de meurtres multiples dans le même tour, plusieurs actions supplémentaires peuvent être gagnées.<br />
+				Lorsque les PV d'un.e joueur.se tombent à zéro, il/elle est éliminé.e, et la personne qui l'a tué.e joue immédiatement <b>une action supplémentaire</b>. En cas de meurtres multiples dans le même tour, plusieurs actions supplémentaires peuvent être gagnées.<br /><br />
 				<b><i>Exemple</i></b> : A mon tour, j'annonce que j'attaque Bob. Je révèle la première carte du paquet : un valet. Bob a un bouclier de 6. J'inflige donc 5 dégâts à Bob. Bob a une carte PV de 7 et une carte PV de 8. Il défausse sa carte PV 7, et la remplace par une carte 2, qu'il va chercher dans la défausse, ou à défaut dans la pioche. Son bouclier n'est pas modifié.
 			</p>
 		</div>
@@ -54,21 +76,31 @@ import { CommonModule } from '@angular/common';
 		<div class="m-4">
 			<h2 class="text-4xl font-['AmaticSC'] mb-2">Autres règles</h2>
 			<p><b>Perte de points de vie</b> : La carte PV la plus faible est toujours perdue en priorité.</p>
-			<p><img src="img/clairvoyance.png" class="float-start img-icon p-1 m-1" alt="Clairvoyance"><b>Clairvoyance</b> : Tant que vous avez exactement 1 point de vie, vous êtes clairvoyant.e : lors de votre tour, vous pouvez regarder la première carte de la pioche, puis choisir votre action.</p>
-			<p><img src="img/dragon.png" class="float-start img-icon p-1 m-1" alt="Réveil du dragon"><b>Réveil du dragon</b> : Lorsque la pile de pioche est épuisée, reformez en une en mélangeant la défausse, puis chaque joueur.se reçoit une attaque venant de la pioche. Chaque fois que la pile est de nouveau terminée, le dragon attaque une fois de plus (2 attaques successives la 2e fois, puis 3, etc.)</p>
+
+			<div class="cards grid gap-4 grid-cols-4 m-5  ">
+
+				<charcard-comp class="card  bg-stone-300 shadow-xl  col-span-2 col-start-2" [name]="clairvoyance.name" [img]="clairvoyance.img" [descr]="clairvoyance.description"></charcard-comp>
+				<charcard-comp class="card  bg-stone-300 shadow-xl  col-span-2 col-start-2" [name]="dragon.name" [img]="dragon.img" [descr]="dragon.description"></charcard-comp>
+
+			</div>
+
+			<!-- <p><img src="img/clairvoyance.png" class="float-start img-icon p-1 m-1" alt="Clairvoyance"><b>Clairvoyance</b> : Tant que vous avez exactement 1 point de vie, vous êtes clairvoyant.e : lors de votre tour, vous pouvez regarder la première carte de la pioche, puis choisir votre action.</p>
+			<p><img src="img/dragon.png" class="float-start img-icon p-1 m-1" alt="Réveil du dragon"><b>Réveil du dragon</b> : Lorsque la pile de pioche est épuisée, reformez en une en mélangeant la défausse, puis chaque joueur.se reçoit une attaque venant de la pioche. Chaque fois que la pile est de nouveau terminée, le dragon attaque une fois de plus (2 attaques successives la 2e fois, puis 3, etc.)</p> -->
 		</div>
 		<div class="m-4">
-			<h4>Personnages de base</h4>
+			<h2 class="text-4xl font-['AmaticSC'] mb-2">Personnages de base</h2>
+
 			<p>Au début de la partie, avant de distribuer les cartes, chaque joueur.se choisit un personnage qui lui confère un pouvoir. On recommande une sélection aléatoire, où chaque personnage ne peut être tiré qu'une fois.<br />
 			L'application <a href="https://play.google.com/store/apps/details?id=com.komorebi.roulette">Roulette+</a> du Playstore permet de faire ce tirage. Il est aussi possible de jouer en choisissant librement vos persos, et/ou de jouer plusieurs fois le même personnage (sauf pour le.la mage).</p>
-			<p class="character" id="item-2-1"><img src="img/warrior.png" class="float-start img-icon p-1 m-1" alt="Guerrier / Guerrière"><b>Guerrier / Guerrière</b> : Vous pouvez utiliser votre action de tour pour charger un bouclier. Pour cela, posez la carte piochée face visible à côté de votre bouclier. La prochaine fois que vous subissez une attaque, si votre bouclier de base ne suffit pas à la bloquer, le bouclier chargé est utilisé pour bloquer en plus, puis défaussé.</p>
-			<p class="character" id="item-2-2"><img src="img/necromancer.png" class="float-start img-icon p-1 m-1" alt="Nécromancien / Nécromancienne"><b>Nécromancien / Nécromancienne</b> : Pour réaliser votre action de tour, vous pouvez utiliser la première carte de la pioche (comme pour un tour normal), ou la première carte de la défausse. Vous ne pouvez pas utiliser ce pouvoir pour remettre un bouclier qui vient d'être modifié. <i>(ex. si un.e joueur.se a changé son bouclier qui se retrouve au-dessus de la défausse, vous ne pouvez pas le lui remettre avec votre pouvoir, y compris si le tour d'autres joueur.ses est passé depuis.)</i>.</p>
-			<p class="character" id="item-2-3"><img src="img/mage.png" class="float-start img-icon p-1 m-1" alt="Mage"><b>Mage</b> : Chaque fois qu'un As ou un Roi est révélé pour une action ou un pouvoir de personnage, vous pouvez inverser sa valeur (Un As devient Roi, ou un Roi devient As). Récupérez un As ou un Roi dans la défausse ou à défaut dans la pioche, pour remplacer la carte transformée. Remettez cette dernière à l'emplacement où vous avez pris la nouvelle carte (pioche ou défausse).<br />
-			<i>Vous ne pouvez transformer une carte qu'au moment où elle apparaît. Vous ne pouvez pas changer les cartes PV des joueur.ses. Vous pouvez changer les cartes jouées de la défausse par le.la nécromancien.ne.</i></p>
-			<p class="character" id="item-2-4"><img src="img/thief.png" class="float-start img-icon p-1 m-1" alt="Voleur / Voleuse"><b>Voleur / Voleuse</b> : Chaque fois que vous faites perdre des PV à un.e joueur.se, vous pouvez échanger une de ses cartes contre une des votre. Chaque carte échangée peut être indifféremment une carte PV ou bouclier. Ce pouvoir s'applique après la perte de PV occasionnée par l'attaque. Si l'attaque est fatale, vous pouvez échanger le bouclier de la personne tuée contre une de vos cartes que vous défaussez.</p>
+
+			<div class="cards grid gap-4 grid-cols-4 m-5  ">
+
+				<charcard-comp *ngFor="let char of characters; index as i;" class="card  bg-stone-300 shadow-xl  col-span-2 col-start-2" [name]="char.name" [img]="char.img" [descr]="char.description" ></charcard-comp>
+
+			</div>
 		</div>
 		<div class="m-4">
-			<h4>Personnages avancés</h4>
+			<h2 class="text-4xl font-['AmaticSC'] mb-2">Personnages avancés</h2> 
 			<p class="character" ><img src="img/alchemist.png" class="float-start img-icon p-1 m-1" alt="Alchimiste"><b>Alchimiste</b> : vous disposez de 3 potions à usage unique :
 			<ul>
 				<li>Potion de feu : A utiliser avant une attaque (chargée ou non), elle permet de choisir 1 cible adjacente supplémentaire.</li>
@@ -105,5 +137,53 @@ import { CommonModule } from '@angular/common';
 })
 export class RulesComponent {
 	title = 'RulesComponent';
-	table = "../assets/img/table.png";
+	table = "../assets/img/rules/table.png";
+
+	clairvoyance = {
+		name : "Clairvoyance",
+		img : "rules/clairvoyance.png",
+		description : "Tant que vous avez exactement 1 point de vie, vous êtes clairvoyant.e : lors de votre tour, vous pouvez regarder la première carte de la pioche, puis choisir votre action.",
+	} as Character;
+
+	dragon = {
+		name : "Réveil du dragon",
+		img : "rules/dragon.png",
+		description : "Lorsque la pile de pioche est épuisée, reformez en une en mélangeant la défausse, puis chaque joueur.se reçoit une attaque venant de la pioche. Chaque fois que la pile est de nouveau terminée, le dragon attaque une fois de plus (2 attaques successives la 2e fois, puis 3, etc.)",
+	} as Character;
+
+	characters = [
+		{
+			name : "Guerrier·ère",
+			img : "characters/warrior.png",
+			description : "Vous pouvez utiliser votre action de tour pour charger un bouclier. Pour cela, posez la carte piochée face visible à côté de votre bouclier. La prochaine fois que vous subissez une attaque, si votre bouclier de base ne suffit pas à la bloquer, le bouclier chargé est utilisé pour bloquer en plus, puis défaussé.",
+			difficult : false,
+		},
+		{
+			name : "Nécromancien·ne",
+			img : "characters/necromancer.png",
+			description : "Pour réaliser votre action de tour, vous pouvez utiliser la première carte de la pioche (comme pour un tour normal), ou la première carte de la défausse. Vous ne pouvez pas utiliser ce pouvoir pour remettre un bouclier qui vient d'être modifié. (ex. si un·e joueur·se a changé son bouclier qui se retrouve au-dessus de la défausse, vous ne pouvez pas le lui remettre avec votre pouvoir, y compris si le tour d'autres joueur·ses est passé depuis.).",
+			difficult : false,
+			},
+			{
+			name : "Mage ",
+			img : "characters/mage.png",
+			description : "Chaque fois qu'un As ou un Roi est révélé pour une action ou un pouvoir de personnage, vous pouvez inverser sa valeur (Un As devient Roi, ou un Roi devient As). Récupérez un As ou un Roi dans la défausse ou à défaut dans la pioche, pour remplacer la carte transformée. Remettez cette dernière à l'emplacement où vous avez pris la nouvelle carte (pioche ou défausse). Vous ne pouvez transformer une carte qu'au moment où elle apparaît. Vous ne pouvez pas changer les cartes PV des joueur·ses. Vous pouvez changer les cartes jouées de la défausse par le·la nécromancien·ne.",
+			difficult : false,
+			},
+			{
+			name : "Voleur·euse ",
+			img : "characters/thief.png",
+			description : "Chaque fois que vous faites perdre des PV à un·e joueur·se, vous pouvez échanger une de ses cartes contre une des vôtres. Chaque carte échangée peut être indifféremment une carte PV ou bouclier. Ce pouvoir s'applique après la perte de PV occasionnée par l'attaque. Si l'attaque est fatale, vous pouvez échanger le bouclier de la personne tuée contre une de vos cartes que vous défaussez.",
+			difficult : false,
+			},
+		  
+	  ] as Character[];
 }
+
+interface Character {
+	name : string,
+	img : string,
+	description : string,
+	difficult : boolean,
+  }
+  
