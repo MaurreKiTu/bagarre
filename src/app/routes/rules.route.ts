@@ -10,8 +10,10 @@ import { Character } from '../shared/character.component';
   template: `
     <div class="sm:p-10">
       <div class="m-4 mb-6">
-        <h2 class="text-4xl font-['AmaticSC'] mb-2">Vue d'ensemble</h2>
-        <p>
+        <h2 class="text-4xl font-['AmaticSC'] mb-3 text-center">
+          Vue d'ensemble
+        </h2>
+        <p class="text-justify">
           La bagarre est un jeu rapide de combat. Le but est de rester en vie !
           Si c'est votre première partie, on recommande de jouer d'abord avec
           les règles de base, puis d'ajouter les personnages lorsque vous avez
@@ -19,7 +21,9 @@ import { Character } from '../shared/character.component';
         </p>
       </div>
       <div class="m-4">
-        <h2 class="text-4xl font-['AmaticSC'] mb-2">Mise en place</h2>
+        <h2 class="text-4xl font-['AmaticSC'] mb-3 text-center">
+          Mise en place
+        </h2>
         <p class="mb-8">
           Dans ce jeu, l'as vaut 1, le valet vaut 11, la dame 12 et le roi 13.
           Mélangez un jeu de 52 cartes et distribuez 3 cartes à chaque
@@ -28,7 +32,7 @@ import { Character } from '../shared/character.component';
         <div class="flex justify-center">
           <img class="p-2" src="{{ table }}" alt="Placement" />
         </div>
-        <ul class="marker:text-primary list-disc">
+        <ul class="marker:text-primary list-disc p-7">
           <li>
             Les 2 cartes les plus grandes côte à côte verticalement : ce sont
             ses <b>points de vie (PV)</b>.
@@ -49,7 +53,9 @@ import { Character } from '../shared/character.component';
         </p>
       </div>
       <div class="m-4">
-        <h2 class="text-4xl font-['AmaticSC'] mb-2">Déroulement d'un tour</h2>
+        <h2 class="text-4xl font-['AmaticSC'] mb-3 text-center">
+          Déroulement d'un tour
+        </h2>
         <p>
           A votre tour, choisissez une action parmi les 4 ci-dessous, et
           annoncez-la à voix haute. Révélez ensuite la première carte de la
@@ -91,7 +97,7 @@ import { Character } from '../shared/character.component';
               la carte correspondant à son nouveau total de PV.
             </p>
             <ul
-              class="marker:text-primary list-disc text-justify p-6 text-black"
+              class="marker:text-primary list-disc text-justify p-7 text-black"
             >
               <li>
                 Si la carte recherchée n'est pas dans la défausse, elle la prend
@@ -117,7 +123,7 @@ import { Character } from '../shared/character.component';
               défaussées.
             </p>
             <ul
-              class="marker:text-primary list-disc text-justify p-6 text-black"
+              class="marker:text-primary list-disc p-7 text-justify text-black"
             >
               Attention :
               <li>
@@ -148,11 +154,15 @@ import { Character } from '../shared/character.component';
         </p>
       </div>
       <div class="m-4">
-        <h2 class="text-4xl font-['AmaticSC'] mb-2">Fin de partie</h2>
+        <h2 class="text-4xl font-['AmaticSC'] mb-3 text-center">
+          Fin de partie
+        </h2>
         <p>La dernière personne en vie dans la partie gagne.</p>
       </div>
       <div class="m-4">
-        <h2 class="text-4xl font-['AmaticSC'] mb-2">Autres règles</h2>
+        <h2 class="text-4xl font-['AmaticSC'] mb-3 text-center">
+          Autres règles
+        </h2>
         <p>
           <b>Perte de points de vie</b> : La carte PV la plus faible est
           toujours perdue en priorité.
@@ -173,7 +183,7 @@ import { Character } from '../shared/character.component';
 			<p><img src="img/dragon.png" class="float-start img-icon p-1 m-1" alt="Réveil du dragon"><b>Réveil du dragon</b> : Lorsque la pile de pioche est épuisée, reformez en une en mélangeant la défausse, puis chaque joueur.se reçoit une attaque venant de la pioche. Chaque fois que la pile est de nouveau terminée, le dragon attaque une fois de plus (2 attaques successives la 2e fois, puis 3, etc.)</p> -->
       </div>
       <div class="m-4">
-        <h2 class="text-4xl font-['AmaticSC'] mb-2 text-center">
+        <h2 class="text-4xl font-['AmaticSC'] mb-3 text-center">
           Personnages de base
         </h2>
 
@@ -195,7 +205,7 @@ import { Character } from '../shared/character.component';
       </div>
 
       <div class="m-4">
-        <h2 class="text-4xl font-['AmaticSC'] mb-2 text-center">
+        <h2 class="text-4xl font-['AmaticSC'] mb-3 text-center">
           Personnages avancés
         </h2>
         <div class="cards grid gap-4 grid-cols-8 sm:mx-0 md:mx-4 lg:mx-12 my-6">
@@ -207,7 +217,7 @@ import { Character } from '../shared/character.component';
         </div>
       </div>
       <div class="m-4">
-        <h2 class="text-4xl font-['AmaticSC'] mb-2">Scénarios</h2>
+        <h2 class="text-4xl font-['AmaticSC'] mb-3">Scénarios</h2>
         <p id="item-4-1">
           <b>Scénarios en équipe</b><br />
           <i>Classique</i> : Formez autant d'équipes que vous souhaitez (ex. 3V3
@@ -296,7 +306,7 @@ export default class RulesRoute {
       name: 'Alchimiste',
       img: 'characters/alchemist.png',
       description:
-        "Vous disposez de 3 potions à usage unique :<ul><li>Potion de feu : A utiliser avant une attaque (chargée ou non), elle permet de choisir 1 cible adjacente supplémentaire.</li><li>Potion d'invisibilité : A utiliser à tout moment, elle permet d'éviter une action indésirable qui vous cible (attaque, changement de bouclier, contre attaque…).</li><li>Potion de vitesse : À utiliser à la fin de votre tour, vous permet de rejouer une action immédiatement. Vous ne pouvez pas utiliser votre potion de feu</li></ul>",
+        "Vous disposez de 3 potions à usage unique :<ul class='p-7'><li>Potion de feu : A utiliser avant une attaque (chargée ou non), elle permet de choisir 1 cible adjacente supplémentaire.</li><li>Potion d'invisibilité : A utiliser à tout moment, elle permet d'éviter une action indésirable qui vous cible (attaque, changement de bouclier, contre attaque…).</li><li>Potion de vitesse : À utiliser à la fin de votre tour, vous permet de rejouer une action immédiatement. Vous ne pouvez pas utiliser votre potion de feu</li></ul>",
       difficult: true,
     },
     {
