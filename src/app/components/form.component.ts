@@ -2,12 +2,10 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: "contact-comp",
+  selector: 'form-comp',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    contact
-  `
+  template: ` formulaire `,
 })
 export class ContactComponent {
   title = '';
