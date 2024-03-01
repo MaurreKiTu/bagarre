@@ -3,4 +3,6 @@ export interface Character {
   img: string;
   description: string;
   difficult: boolean;
+  showImg: boolean;
+  forceMiniImg: boolean;
 }

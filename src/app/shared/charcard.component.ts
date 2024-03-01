@@ -10,19 +10,21 @@ import { Character } from './character.component';
   template: `
     <h2 class="card-title justify-center bg-slate-600 rounded-t-lg p-2 ">
       <img
-        class="sm:display md:hidden w-5"
+        *ngIf="this.showImgForced || character.forceMiniImg"
+        class="w-5"
         src="../assets/img/{{ character.img }}"
         alt="{{ character.name }}"
       />
       {{ character.name }}
       <img
-        class="sm:display md:hidden w-5"
+        *ngIf="this.showImgForced || character.forceMiniImg"
+        class="w-5"
         src="../assets/img/{{ character.img }}"
         alt="{{ character.name }}"
       />
     </h2>
     <div class="flex flex-row items-center h-full">
-      <div class="w-1/3 p-6 hidden sm:block">
+      <div *ngIf="character.showImg" class="w-1/3 p-6 hidden sm:block">
         <img
           class="max-h-full "
           src="../assets/img/{{ character.img }}"
@@ -39,4 +41,6 @@ export class CharcardComponent {
   title = '';
 
   @Input() character = {} as Character;
+
+  showImgForced: boolean = window.innerWidth <= 768;
 }
