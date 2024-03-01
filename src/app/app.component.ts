@@ -42,9 +42,11 @@ import { RouterLink, RouterOutlet } from '@angular/router';
             </ul>
           </div>
         </div>
-        <h1 class="text-5xl xs:text-7xl font-['AmaticSC'] self-center">
-          {{ title }}
-        </h1>
+        <a href="/"
+          ><h1 class="text-5xl xs:text-7xl font-['AmaticSC'] self-center">
+            {{ title }}
+          </h1>
+        </a>
         <img class="p-2 " src="{{ logo }}" />
       </div>
 
